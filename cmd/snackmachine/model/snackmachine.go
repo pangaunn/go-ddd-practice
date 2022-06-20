@@ -3,6 +3,7 @@ package model
 type SnackMachine interface {
 	InsertMoney(oneCentCount, tenCentCount, quarterCount, oneDollarCount, fiveDollarCount, twentyDollarCount int)
 	ReturnMoney()
+	BuySnack()
 }
 
 type snackMachine struct {
@@ -35,6 +36,22 @@ func (s *snackMachine) InsertMoney(oneCentCount, tenCentCount, quarterCount, one
 }
 
 func (s *snackMachine) ReturnMoney() {
+	s.OneCentCountInTransaction = 0
+	s.TenCentCountInTransaction = 0
+	s.QuarterCountInTransaction = 0
+	s.OneDollarCountInTransaction = 0
+	s.FiveDollarCountInTransaction = 0
+	s.TwentyDollarCountInTransaction = 0
+}
+
+func (s *snackMachine) BuySnack() {
+	s.OneCentCount += s.OneCentCountInTransaction
+	s.TenCentCount += s.TenCentCountInTransaction
+	s.QuarterCount += s.QuarterCountInTransaction
+	s.OneDollarCount += s.OneDollarCountInTransaction
+	s.FiveDollarCount += s.FiveDollarCountInTransaction
+	s.TwentyDollarCount += s.TwentyDollarCountInTransaction
+
 	s.OneCentCountInTransaction = 0
 	s.TenCentCountInTransaction = 0
 	s.QuarterCountInTransaction = 0
