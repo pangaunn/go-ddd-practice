@@ -20,20 +20,16 @@ func NewMoney(oneCentCount, tenCentCount, quarterCount, oneDollarCount, fiveDoll
 	}
 }
 
-func (m *Money) Add(mo Money) {
-	m.OneCentCount += mo.OneCentCount
-	m.TenCentCount += mo.TenCentCount
-	m.QuarterCount += mo.QuarterCount
-	m.OneDollarCount += mo.OneDollarCount
-	m.FiveDollarCount += mo.FiveDollarCount
-	m.TwentyDollarCount += mo.TwentyDollarCount
+func (m *Money) Add(mo Money) Money {
+	oneCentCount := m.OneCentCount + mo.OneCentCount
+	tenCentCount := m.TenCentCount + mo.TenCentCount
+	quarterCount := m.QuarterCount + mo.QuarterCount
+	oneDollarCount := m.OneDollarCount + mo.OneDollarCount
+	fiveDollarCount := m.FiveDollarCount + mo.FiveDollarCount
+	twentyDollarCount := m.TwentyDollarCount + mo.TwentyDollarCount
+	return NewMoney(oneCentCount, tenCentCount, quarterCount, oneDollarCount, fiveDollarCount, twentyDollarCount)
 }
 
-func (m *Money) Clear() {
-	m.OneCentCount = 0
-	m.TenCentCount = 0
-	m.QuarterCount = 0
-	m.OneDollarCount = 0
-	m.FiveDollarCount = 0
-	m.TwentyDollarCount = 0
+func (m *Money) Clear() Money {
+	return Money{}
 }

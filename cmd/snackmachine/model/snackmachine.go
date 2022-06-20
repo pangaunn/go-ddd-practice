@@ -16,14 +16,14 @@ func NewSnackMachine() SnackMachine {
 }
 
 func (s *snackMachine) InsertMoney(money Money) {
-	s.MoneyInTransaction.Add(money)
+	s.MoneyInTransaction = s.MoneyInTransaction.Add(money)
 }
 
 func (s *snackMachine) ReturnMoney() {
-	s.MoneyInTransaction.Clear()
+	s.MoneyInTransaction = s.MoneyInTransaction.Clear()
 }
 
 func (s *snackMachine) BuySnack() {
-	s.MoneyInside.Add(s.MoneyInTransaction)
-	s.MoneyInTransaction.Clear()
+	s.MoneyInTransaction = s.MoneyInside.Add(s.MoneyInTransaction)
+	s.MoneyInTransaction = s.MoneyInTransaction.Clear()
 }
