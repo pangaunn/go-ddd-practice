@@ -36,6 +36,22 @@ var _ = Describe("Money", func() {
 			Expect(m3.TwentyDollarCount).Should(Equal(12))
 		})
 	})
+
+	When("Subtract", func() {
+		It("produce correct result", func() {
+			m1 := model.NewMoney(10, 10, 10, 10, 10, 10)
+			m2 := model.NewMoney(1, 2, 3, 4, 5, 6)
+			m3 := m1.Subtract(m2)
+
+			Expect(m3.OneCentCount).Should(Equal(9))
+			Expect(m3.TenCentCount).Should(Equal(8))
+			Expect(m3.QuarterCount).Should(Equal(7))
+			Expect(m3.OneDollarCount).Should(Equal(6))
+			Expect(m3.FiveDollarCount).Should(Equal(5))
+			Expect(m3.TwentyDollarCount).Should(Equal(4))
+		})
+	})
+
 	When("calling value object function", func() {
 		It("should call GetHashCodeCore then produce correct result", func() {
 			m1 := model.NewMoney(1, 2, 3, 4, 5, 6)
