@@ -20,20 +20,6 @@ func NewMoney(oneCentCount, tenCentCount, quarterCount, oneDollarCount, fiveDoll
 	}
 }
 
-func (m *Money) GetHashCodeCore() int {
-	hashCode := m.OneCentCount
-	hashCode = (hashCode * 397) ^ m.TenCentCount
-	hashCode = (hashCode * 397) ^ m.QuarterCount
-	hashCode = (hashCode * 397) ^ m.OneDollarCount
-	hashCode = (hashCode * 397) ^ m.FiveDollarCount
-	hashCode = (hashCode * 397) ^ m.TwentyDollarCount
-	return hashCode
-}
-
-func (m *Money) EqualsCore(money Money) bool {
-	return m.OneCentCount == money.OneCentCount && m.TenCentCount == money.TenCentCount && m.QuarterCount == money.QuarterCount && m.OneDollarCount == money.OneDollarCount && m.FiveDollarCount == money.FiveDollarCount && m.TwentyDollarCount == money.TwentyDollarCount
-}
-
 func (m *Money) Add(mo Money) Money {
 	oneCentCount := m.OneCentCount + mo.OneCentCount
 	tenCentCount := m.TenCentCount + mo.TenCentCount
@@ -46,4 +32,22 @@ func (m *Money) Add(mo Money) Money {
 
 func (m *Money) Clear() Money {
 	return Money{}
+}
+
+func (m *Money) Amount() float64 {
+	return 0
+}
+
+func (m *Money) GetHashCodeCore() int {
+	hashCode := m.OneCentCount
+	hashCode = (hashCode * 397) ^ m.TenCentCount
+	hashCode = (hashCode * 397) ^ m.QuarterCount
+	hashCode = (hashCode * 397) ^ m.OneDollarCount
+	hashCode = (hashCode * 397) ^ m.FiveDollarCount
+	hashCode = (hashCode * 397) ^ m.TwentyDollarCount
+	return hashCode
+}
+
+func (m *Money) EqualsCore(money Money) bool {
+	return m.OneCentCount == money.OneCentCount && m.TenCentCount == money.TenCentCount && m.QuarterCount == money.QuarterCount && m.OneDollarCount == money.OneDollarCount && m.FiveDollarCount == money.FiveDollarCount && m.TwentyDollarCount == money.TwentyDollarCount
 }

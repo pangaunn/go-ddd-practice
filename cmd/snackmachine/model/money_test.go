@@ -4,10 +4,24 @@ import (
 	"go-ddd-practice/cmd/snackmachine/model"
 
 	. "github.com/onsi/ginkgo"
+	. "github.com/onsi/ginkgo/extensions/table"
 	. "github.com/onsi/gomega"
 )
 
 var _ = Describe("Money", func() {
+	DescribeTable("should return correct amount",
+		func(money model.Money, expected float64) {
+			Expect(money.Amount()).Should(Equal(expected))
+		},
+		Entry(model.NewMoney(0, 0, 0, 0, 0, 0), 0),
+		Entry(model.NewMoney(1, 0, 0, 0, 0, 0), 10),
+		Entry(model.NewMoney(0, 1, 0, 0, 0, 0), 10),
+		Entry(model.NewMoney(0, 0, 1, 0, 0, 0), 10),
+		Entry(model.NewMoney(0, 0, 0, 1, 0, 0), 10),
+		Entry(model.NewMoney(0, 0, 0, 0, 1, 0), 10),
+		Entry(model.NewMoney(0, 0, 0, 0, 0, 1), 10),
+	)
+
 	When("Add", func() {
 		It("produce correct result", func() {
 			m1 := model.NewMoney(1, 2, 3, 4, 5, 6)
