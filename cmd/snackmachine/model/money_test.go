@@ -13,13 +13,13 @@ var _ = Describe("Money", func() {
 		func(money model.Money, expected float64) {
 			Expect(money.Amount()).Should(Equal(expected))
 		},
-		Entry(model.NewMoney(0, 0, 0, 0, 0, 0), 0),
-		Entry(model.NewMoney(1, 0, 0, 0, 0, 0), 10),
-		Entry(model.NewMoney(0, 1, 0, 0, 0, 0), 10),
-		Entry(model.NewMoney(0, 0, 1, 0, 0, 0), 10),
-		Entry(model.NewMoney(0, 0, 0, 1, 0, 0), 10),
-		Entry(model.NewMoney(0, 0, 0, 0, 1, 0), 10),
-		Entry(model.NewMoney(0, 0, 0, 0, 0, 1), 10),
+		Entry("0", model.NewMoney(0, 0, 0, 0, 0, 0), float64(0)),
+		Entry(".01", model.NewMoney(1, 0, 0, 0, 0, 0), float64(0.01)),
+		Entry(".1", model.NewMoney(0, 1, 0, 0, 0, 0), float64(.1)),
+		Entry(".25", model.NewMoney(0, 0, 1, 0, 0, 0), float64(.25)),
+		Entry("1", model.NewMoney(0, 0, 0, 1, 0, 0), float64(1)),
+		Entry("5", model.NewMoney(0, 0, 0, 0, 1, 0), float64(5)),
+		Entry("20", model.NewMoney(0, 0, 0, 0, 0, 1), float64(20)),
 	)
 
 	When("Add", func() {

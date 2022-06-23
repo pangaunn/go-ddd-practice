@@ -35,7 +35,12 @@ func (m *Money) Clear() Money {
 }
 
 func (m *Money) Amount() float64 {
-	return 0
+	return float64(m.OneCentCount)*0.01 +
+		float64(m.TenCentCount)*0.1 +
+		float64(m.QuarterCount)*0.25 +
+		float64(m.OneDollarCount) +
+		float64(m.FiveDollarCount)*5 +
+		float64(m.TwentyDollarCount)*20
 }
 
 func (m *Money) GetHashCodeCore() int {
