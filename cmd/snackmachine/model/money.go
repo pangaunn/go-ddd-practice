@@ -30,6 +30,16 @@ func (m *Money) Add(mo Money) Money {
 	return NewMoney(oneCentCount, tenCentCount, quarterCount, oneDollarCount, fiveDollarCount, twentyDollarCount)
 }
 
+func (m *Money) Subtract(mo Money) Money {
+	oneCentCount := m.OneCentCount - mo.OneCentCount
+	tenCentCount := m.TenCentCount - mo.TenCentCount
+	quarterCount := m.QuarterCount - mo.QuarterCount
+	oneDollarCount := m.OneDollarCount - mo.OneDollarCount
+	fiveDollarCount := m.FiveDollarCount - mo.FiveDollarCount
+	twentyDollarCount := m.TwentyDollarCount - mo.TwentyDollarCount
+	return NewMoney(oneCentCount, tenCentCount, quarterCount, oneDollarCount, fiveDollarCount, twentyDollarCount)
+}
+
 func (m *Money) Clear() Money {
 	return Money{}
 }
