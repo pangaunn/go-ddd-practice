@@ -1,29 +1,23 @@
 package model
 
-type SnackMachine interface {
-	InsertMoney(money Money)
-	ReturnMoney()
-	BuySnack()
-}
-
-type snackMachine struct {
+type SnackMachine struct {
 	MoneyInside        Money
 	MoneyInTransaction Money
 }
 
 func NewSnackMachine() SnackMachine {
-	return &snackMachine{}
+	return SnackMachine{}
 }
 
-func (s *snackMachine) InsertMoney(money Money) {
+func (s *SnackMachine) InsertMoney(money Money) {
 	s.MoneyInTransaction = s.MoneyInTransaction.Add(money)
 }
 
-func (s *snackMachine) ReturnMoney() {
+func (s *SnackMachine) ReturnMoney() {
 	s.MoneyInTransaction = s.MoneyInTransaction.Clear()
 }
 
-func (s *snackMachine) BuySnack() {
+func (s *SnackMachine) BuySnack() {
 	s.MoneyInTransaction = s.MoneyInside.Add(s.MoneyInTransaction)
 	s.MoneyInTransaction = s.MoneyInTransaction.Clear()
 }
