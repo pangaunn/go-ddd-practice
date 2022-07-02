@@ -35,3 +35,19 @@ func (s *SnackMachine) ReturnMoney() {
 	s.FiveDollarCountInTransaction = 0
 	s.TwentyDollarCountInTransaction = 0
 }
+
+func (s *SnackMachine) BuySnack() {
+	s.OneCentCount += s.OneCentCountInTransaction
+	s.TenCentCount += s.TenCentCount
+	s.QuarterCentCount += s.QuarterCentCountInTransaction
+	s.OneDollarCount += s.OneDollarCountInTransaction
+	s.FiveDollarCount += s.FiveDollarCountInTransaction
+	s.TwentyDollarCount += s.TwentyDollarCountInTransaction
+
+	s.OneCentCountInTransaction = 0
+	s.TenCentCountInTransaction = 0
+	s.QuarterCentCountInTransaction = 0
+	s.OneDollarCountInTransaction = 0
+	s.FiveDollarCountInTransaction = 0
+	s.TwentyDollarCountInTransaction = 0
+}
