@@ -29,6 +29,15 @@ func (m *Money) Equal(money Money) bool {
 		m.TwentyDollarCount == money.TwentyDollarCount
 }
 
+func (m *Money) Amount() float64 {
+	return float64(m.OneCentCount)*0.01 +
+		float64(m.TenCentCount)*0.1 +
+		float64(m.QuarterCount)*0.25 +
+		float64(m.OneDollarCount) +
+		float64(m.FiveDollarCount)*5 +
+		float64(m.TwentyDollarCount)*20
+}
+
 func (m *Money) Add(money Money) Money {
 	sum := Money{}
 	sum.OneCentCount = m.OneCentCount + money.OneCentCount
