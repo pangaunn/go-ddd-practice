@@ -9,6 +9,15 @@ type Money struct {
 	TwentyDollarCount int
 }
 
+func (m *Money) Equal(money Money) bool {
+	return m.OneCentCount == money.OneCentCount &&
+		m.TenCentCount == money.TenCentCount &&
+		m.QuarterCount == money.QuarterCount &&
+		m.OneDollarCount == money.OneDollarCount &&
+		m.FiveDollarCount == money.FiveDollarCount &&
+		m.TwentyDollarCount == money.TwentyDollarCount
+}
+
 func (m *Money) Add(money Money) Money {
 	sum := Money{}
 	sum.OneCentCount = m.OneCentCount + money.OneCentCount
