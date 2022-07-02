@@ -27,4 +27,11 @@ var _ = Describe("Money", func() {
 
 		Expect(m1.Equal(m2)).Should(BeTrue())
 	})
+
+	It("Should not equal if contain the different amount", func() {
+		m1 := core.NewMoney(1, 2, 3, 4, 5, 6)
+		m2 := core.NewMoney(1, 0, 3, 4, 5, 6)
+
+		Expect(m1.Equal(m2)).Should(BeFalse())
+	})
 })
