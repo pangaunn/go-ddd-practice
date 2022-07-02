@@ -20,4 +20,11 @@ var _ = Describe("Money", func() {
 		Expect(sum.FiveDollarCount).Should(Equal(10))
 		Expect(sum.TwentyDollarCount).Should(Equal(12))
 	})
+
+	It("Should equal if contain the same amount", func() {
+		m1 := core.NewMoney(1, 2, 3, 4, 5, 6)
+		m2 := core.NewMoney(1, 2, 3, 4, 5, 6)
+
+		Expect(m1.Equal(m2)).Should(BeTrue())
+	})
 })
