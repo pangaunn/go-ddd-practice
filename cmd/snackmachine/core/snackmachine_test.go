@@ -23,4 +23,15 @@ var _ = Describe("SnackMachine", func() {
 
 		Expect(sm.MoneyIntransaction.Amount()).Should(Equal(1.01))
 	})
+
+	It("Money in transaction should goes inside after purchase", func() {
+		sm := SnackMachine{}
+		sm.InsertMoney(NewMoney(0, 0, 0, 1, 0, 0))
+		sm.InsertMoney(NewMoney(0, 0, 0, 1, 0, 0))
+
+		sm.BuySnack()
+
+		Expect(sm.MoneyIntransaction.Amount()).Should(Equal(0.0))
+		Expect(sm.MoneyInside.Amount()).Should(Equal(2.0))
+	})
 })
