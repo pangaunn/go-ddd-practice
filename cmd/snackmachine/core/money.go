@@ -9,6 +9,17 @@ type Money struct {
 	TwentyDollarCount int
 }
 
+func NewMoney(oneCent, tenCent, quarter, oneDollar, fiveDollar, twentyDollar int) Money {
+	return Money{
+		OneCentCount:      oneCent,
+		TenCentCount:      tenCent,
+		QuarterCount:      quarter,
+		OneDollarCount:    oneDollar,
+		FiveDollarCount:   fiveDollar,
+		TwentyDollarCount: twentyDollar,
+	}
+}
+
 func (m *Money) Equal(money Money) bool {
 	return m.OneCentCount == money.OneCentCount &&
 		m.TenCentCount == money.TenCentCount &&
