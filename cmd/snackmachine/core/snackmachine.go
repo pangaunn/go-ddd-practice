@@ -1,8 +1,13 @@
 package core
 
 type SnackMachine struct {
+	ID                 int
 	MoneyInside        Money
 	MoneyIntransaction Money
+}
+
+func (s *SnackMachine) Equal(sm SnackMachine) bool {
+	return s.ID == sm.ID
 }
 
 func (s *SnackMachine) InsertMoney(money Money) {
