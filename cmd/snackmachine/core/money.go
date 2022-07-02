@@ -39,12 +39,23 @@ func (m *Money) Amount() float64 {
 }
 
 func (m *Money) Add(money Money) Money {
-	sum := Money{}
-	sum.OneCentCount = m.OneCentCount + money.OneCentCount
-	sum.TenCentCount = m.TenCentCount + money.TenCentCount
-	sum.QuarterCount = m.QuarterCount + money.QuarterCount
-	sum.OneDollarCount = m.OneDollarCount + money.OneDollarCount
-	sum.FiveDollarCount = m.FiveDollarCount + money.FiveDollarCount
-	sum.TwentyDollarCount = m.TwentyDollarCount + money.TwentyDollarCount
-	return sum
+	result := Money{}
+	result.OneCentCount = m.OneCentCount + money.OneCentCount
+	result.TenCentCount = m.TenCentCount + money.TenCentCount
+	result.QuarterCount = m.QuarterCount + money.QuarterCount
+	result.OneDollarCount = m.OneDollarCount + money.OneDollarCount
+	result.FiveDollarCount = m.FiveDollarCount + money.FiveDollarCount
+	result.TwentyDollarCount = m.TwentyDollarCount + money.TwentyDollarCount
+	return result
+}
+
+func (m *Money) Subtract(money Money) Money {
+	result := Money{}
+	result.OneCentCount = m.OneCentCount - money.OneCentCount
+	result.TenCentCount = m.TenCentCount - money.TenCentCount
+	result.QuarterCount = m.QuarterCount - money.QuarterCount
+	result.OneDollarCount = m.OneDollarCount - money.OneDollarCount
+	result.FiveDollarCount = m.FiveDollarCount - money.FiveDollarCount
+	result.TwentyDollarCount = m.TwentyDollarCount - money.TwentyDollarCount
+	return result
 }
