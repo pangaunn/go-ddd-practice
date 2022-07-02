@@ -7,15 +7,22 @@ type SnackMachine struct {
 	OneDollarCount    int
 	FiveDollarCount   int
 	TwentyDollarCount int
+
+	OneCentCountInTransaction      int
+	TenCentCountInTransaction      int
+	QuarterCentCountInTransaction  int
+	OneDollarCountInTransaction    int
+	FiveDollarCountInTransaction   int
+	TwentyDollarCountInTransaction int
 }
 
 func (s *SnackMachine) InsertMoney(
 	oneCent, tenCent, quarterCent,
 	oneDollar, fiveDollar, twentyDollar int) {
-	s.OneCentCount += oneCent
-	s.TenCentCount += tenCent
-	s.QuarterCentCount += quarterCent
-	s.OneDollarCount += oneDollar
-	s.FiveDollarCount += fiveDollar
-	s.TwentyDollarCount += twentyDollar
+	s.OneCentCountInTransaction += oneCent
+	s.TenCentCountInTransaction += tenCent
+	s.QuarterCentCountInTransaction += quarterCent
+	s.OneDollarCountInTransaction += oneDollar
+	s.FiveDollarCountInTransaction += fiveDollar
+	s.TwentyDollarCountInTransaction += twentyDollar
 }
