@@ -1,7 +1,7 @@
 package core_test
 
 import (
-	"go-ddd-practice/cmd/snackmachine/core"
+	. "go-ddd-practice/cmd/snackmachine/core"
 
 	. "github.com/onsi/ginkgo"
 	. "github.com/onsi/ginkgo/extensions/table"
@@ -10,8 +10,8 @@ import (
 
 var _ = Describe("Money", func() {
 	It("Should add correctly", func() {
-		m1 := core.NewMoney(1, 2, 3, 4, 5, 6)
-		m2 := core.NewMoney(1, 2, 3, 4, 5, 6)
+		m1 := NewMoney(1, 2, 3, 4, 5, 6)
+		m2 := NewMoney(1, 2, 3, 4, 5, 6)
 
 		result := m1.Add(m2)
 		Expect(result.OneCentCount).Should(Equal(2))
@@ -23,8 +23,8 @@ var _ = Describe("Money", func() {
 	})
 
 	It("Should subtract correctly", func() {
-		m1 := core.NewMoney(10, 10, 10, 10, 10, 10)
-		m2 := core.NewMoney(1, 2, 3, 4, 5, 6)
+		m1 := NewMoney(10, 10, 10, 10, 10, 10)
+		m2 := NewMoney(1, 2, 3, 4, 5, 6)
 
 		result := m1.Subtract(m2)
 		Expect(result.OneCentCount).Should(Equal(9))
@@ -36,29 +36,29 @@ var _ = Describe("Money", func() {
 	})
 
 	It("Should equal if contain the same amount", func() {
-		m1 := core.NewMoney(1, 2, 3, 4, 5, 6)
-		m2 := core.NewMoney(1, 2, 3, 4, 5, 6)
+		m1 := NewMoney(1, 2, 3, 4, 5, 6)
+		m2 := NewMoney(1, 2, 3, 4, 5, 6)
 
 		Expect(m1.Equal(m2)).Should(BeTrue())
 	})
 
 	It("Should not equal if contain the different amount", func() {
-		m1 := core.NewMoney(1, 2, 3, 4, 5, 6)
-		m2 := core.NewMoney(1, 0, 3, 4, 5, 6)
+		m1 := NewMoney(1, 2, 3, 4, 5, 6)
+		m2 := NewMoney(1, 0, 3, 4, 5, 6)
 
 		Expect(m1.Equal(m2)).Should(BeFalse())
 	})
 
 	DescribeTable("should return correct amount",
-		func(money core.Money, expected float64) {
+		func(money Money, expected float64) {
 			Expect(money.Amount()).Should(Equal(expected))
 		},
-		Entry("0", core.NewMoney(0, 0, 0, 0, 0, 0), float64(0)),
-		Entry(".01", core.NewMoney(1, 0, 0, 0, 0, 0), float64(0.01)),
-		Entry(".1", core.NewMoney(0, 1, 0, 0, 0, 0), float64(.1)),
-		Entry(".25", core.NewMoney(0, 0, 1, 0, 0, 0), float64(.25)),
-		Entry("1", core.NewMoney(0, 0, 0, 1, 0, 0), float64(1)),
-		Entry("5", core.NewMoney(0, 0, 0, 0, 1, 0), float64(5)),
-		Entry("20", core.NewMoney(0, 0, 0, 0, 0, 1), float64(20)),
+		Entry("0", NewMoney(0, 0, 0, 0, 0, 0), float64(0)),
+		Entry(".01", NewMoney(1, 0, 0, 0, 0, 0), float64(0.01)),
+		Entry(".1", NewMoney(0, 1, 0, 0, 0, 0), float64(.1)),
+		Entry(".25", NewMoney(0, 0, 1, 0, 0, 0), float64(.25)),
+		Entry("1", NewMoney(0, 0, 0, 1, 0, 0), float64(1)),
+		Entry("5", NewMoney(0, 0, 0, 0, 1, 0), float64(5)),
+		Entry("20", NewMoney(0, 0, 0, 0, 0, 1), float64(20)),
 	)
 })
