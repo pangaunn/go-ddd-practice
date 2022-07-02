@@ -13,6 +13,14 @@ var _ = Describe("SnackMachine", func() {
 		sm.InsertMoney(NewMoney(0, 0, 0, 1, 0, 0))
 		sm.ReturnMoney()
 
-		Expect(sm.MoneyIntransaction.Amount()).Should(Equal(0))
+		Expect(sm.MoneyIntransaction.Amount()).Should(Equal(0.0))
+	})
+
+	It("Should have correct amount when insertMoney", func() {
+		sm := SnackMachine{}
+		sm.InsertMoney(NewMoney(1, 0, 0, 0, 0, 0))
+		sm.InsertMoney(NewMoney(0, 0, 0, 1, 0, 0))
+
+		Expect(sm.MoneyIntransaction.Amount()).Should(Equal(1.01))
 	})
 })
