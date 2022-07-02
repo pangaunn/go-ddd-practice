@@ -26,3 +26,12 @@ func (s *SnackMachine) InsertMoney(
 	s.FiveDollarCountInTransaction += fiveDollar
 	s.TwentyDollarCountInTransaction += twentyDollar
 }
+
+func (s *SnackMachine) ReturnMoney() {
+	s.OneCentCountInTransaction = 0
+	s.TenCentCountInTransaction = 0
+	s.QuarterCentCountInTransaction = 0
+	s.OneDollarCountInTransaction = 0
+	s.FiveDollarCountInTransaction = 0
+	s.TwentyDollarCountInTransaction = 0
+}
