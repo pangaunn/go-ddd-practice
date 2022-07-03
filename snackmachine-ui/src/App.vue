@@ -1,6 +1,5 @@
 <template>
   <div class="py-12 bg-white">
-    <div>Snack Machine</div>
     <div class="flex flex-row justify-center">
       <div class="basis-1/2 flex justify-center">
         <div class="flex flex-col">
@@ -10,6 +9,7 @@
                 <img src="https://static.bigc.co.th/media/catalog/product/8/8/8858998581153_2.jpg" />
               </div>
               <div>
+                <div>Pepsi</div>
                 <div>$1.00</div>
                 <div>10 left</div>
               </div>
@@ -97,16 +97,12 @@
           </div>
           <div class="flex flex-col mt-6">
             <div>Money Inside $0</div>
-            <div class="flex flex-row justify-center">
-              <div>1¢: 0</div>
-              <div>10¢: 0</div>
-              <div>25¢: 0</div>
-            </div>
-            <div class="flex flex-row justify-center">
-              <div>1$: 0</div>
-              <div>5$: 0</div>
-              <div>20$: 0</div>
-            </div>
+            <div>1¢: 0</div>
+            <div>10¢: 0</div>
+            <div>25¢: 0</div>
+            <div>1$: 0</div>
+            <div>5$: 0</div>
+            <div>20$: 0</div>
           </div>
         </div>
         
